@@ -1,0 +1,19 @@
+## Interface: 20501
+## Title: Equinox
+## Notes: Equinox Guild Manager
+## Author: Ayshae
+## Version: 0.1
+## SavedVariables: EquinoxDb, G_LootHistory, G_RaidId, G_InstanceInfo
+libs\LibStub\LibStub.lua
+
+#@no-lib-strip@
+libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+libs\AceAddon-3.0\AceAddon-3.0.xml
+libs\AceConsole-3.0\AceConsole-3.0.xml
+libs\AceEvent-3.0\AceEvent-3.0.xml
+libs\AceDB-3.0\AceDB-3.0.xml
+libs\LibHash\LibHash-1.0.xml
+#@end-no-lib-strip@
+
+frame.xml
+main.lua
