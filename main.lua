@@ -14,6 +14,7 @@ function Equinox:OnInitialize()
     Equinox:RegisterChatCommand('eqraid', 'HandleRaidExportCommand')
     Equinox:RegisterChatCommand('eqrst', 'HandleResetLootCommand')
     Equinox:RegisterChatCommand('eqloot', 'HandleExportLootCommand')
+    Equinox:RegisterChatCommand('eqrand', 'HandleRandCommand')
 end
 
 -- region handler
@@ -23,10 +24,41 @@ function Equinox:HandBackValue()
 end
 
 function Equinox:HandleTest()
+    MainFrame:Show();
 end
 
 function Equinox:HandleRaidInfo()
     G_InstanceInfo = GetInstanceInfo()
+end
+
+function Equinox:HandleRandCommand(input)
+    local baseSplit = Equinox:SplitString(input, "#");
+    local itemId = baseSplit[1];
+    local characterCanRand = baseSplit[2];
+    local characterCantRand = baseSplit[3];
+
+    local it = select(2, GetItemInfo(itemId));
+    SendChatMessage("Roll for : ", "RAID_WARNING");
+    SendChatMessage(it, "RAID_WARNING");
+
+    SendChatMessage("-----------------------------", "RAID");
+    local charactersCanRand = Equinox:SplitString(characterCanRand, "*");
+    for _, v in ipairs(charactersCanRand) do
+        local splitRatio = Equinox:SplitString(v, "_");
+        SendChatMessage(splitRatio[1] .. " => " .. splitRatio[2], "RAID");
+    end
+
+    SendChatMessage("-----------------------------", "RAID");
+    local charactersCantRand = Equinox:SplitString(characterCantRand, "*");
+    local baseCanRandContent = "No roll : ";
+
+    for _, v in ipairs(charactersCantRand) do
+        local splitRatio = Equinox:SplitString(v, "_");
+        baseCanRandContent = baseCanRandContent .. splitRatio[1] .. "(" .. splitRatio[2] ..") /";
+    end
+
+    SendChatMessage(baseCanRandContent, "RAID");
+    SendChatMessage("-----------------------------", "RAID");
 end
 
 function Equinox:HandleResetLootCommand()
@@ -129,6 +161,18 @@ function Equinox:DisplayExportStringWithoutCrypting(exportString)
 
     EquinoxFrameButton:SetScript("OnClick", function(self) EquinoxFrame:Hide(); end);
 end
+
+function Equinox:SplitString (inputstr, sep)
+    if sep == nil then
+       sep = "%s"
+    end
+    local t={}
+    for str in string.gmatch(inputstr, "([^"..sep.."]+)") do 
+       table.insert(t, str)
+    end
+    return t
+ end
+
 
 local extract = _G.bit32 and _G.bit32.extract
 if not extract then

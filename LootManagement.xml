@@ -1,0 +1,27 @@
+<Ui xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="LootManagement.lua" />
+	<Frame name="MainFrame" inherits="BackdropTemplate" hidden="true" movable="true" enableMouse="true" enableKeyboard="true" clampedToScreen="true">
+		<Size x="955" y="443" />
+		<Anchors>
+			<Anchor point="CENTER" />
+		</Anchors>
+		<KeyValues>
+			<KeyValue key="backdropInfo" value="BACKDROP_DIALOG_32_32" keyType="string" type="global" />
+		</KeyValues>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true" alphaMode="MOD">
+			<BackgroundInsets left="11" right="12" top="12" bottom="11" />
+			<TileSize val="32" />
+			<EdgeSize val="32" />
+		</Backdrop>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="RaidInformationsTitle" inherits="ArtifactAppearanceSetHighlightFont" text="Raid informations">
+					<Size x="198" y="47" />
+					<Anchors>
+						<Anchor x="14" y="-16" point="TOPLEFT" />
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+	</Frame>
+</Ui>

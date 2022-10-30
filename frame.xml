@@ -1,20 +1,18 @@
-<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
-..\FrameXML\UI.xsd">
-
-	<Frame name="EquinoxFrame" parent="UIParent" inherits="BackdropTemplate" movable="true" enableMouse="true" hidden="true">
-		<KeyValues>
-			<KeyValue key="backdropInfo" value="BACKDROP_GOLD_DIALOG_32_32" type="global" />
-			<KeyValue key="backdropBorderColor" value="LEGENDARY_ORANGE_COLOR" type="global" />
-			<KeyValue key="backdropBorderColorAlpha" value="1" type="number" />
-		</KeyValues>
+<Ui xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd" xmlns="http://www.blizzard.com/wow/ui/">
+	<Frame name="EquinoxFrame" inherits="BackdropTemplate" hidden="true" parent="UIParent" movable="true" enableMouse="true">
 		<Size>
 			<AbsDimension x="700" y="450" />
 		</Size>
 		<Anchors>
 			<Anchor point="CENTER" />
 		</Anchors>
+		<KeyValues>
+			<KeyValue key="backdropInfo" value="BACKDROP_GOLD_DIALOG_32_32" keyType="string" type="global" />
+			<KeyValue key="backdropBorderColor" value="LEGENDARY_ORANGE_COLOR" keyType="string" type="global" />
+			<KeyValue key="backdropBorderColorAlpha" value="1" keyType="string" type="number" />
+		</KeyValues>
 		<Frames>
-			<Button name="EquinoxFrameButton" text="Close" inherits="GameMenuButtonTemplate">
+			<Button name="EquinoxFrameButton" inherits="GameMenuButtonTemplate" text="Close">
 				<Anchors>
 					<Anchor point="BOTTOM" relativeTo="EquinoxFrame" relativePoint="BOTTOM">
 						<Offset>
@@ -37,19 +35,32 @@
 					</Anchor>
 					<Anchor point="RIGHT">
 						<Offset>
-							<AbsDimension x="-40" />
+							<AbsDimension x="-40" y="0" />
 						</Offset>
 					</Anchor>
 				</Anchors>
 				<ScrollChild>
-					<EditBox name="EquinoxFrameScrollText" letters="99999" multiLine="true" autoFocus="true" enableMouse="true">
+					<EditBox name="EquinoxFrameScrollText" enableMouse="true" letters="99999" multiLine="true">
 						<Size>
 							<AbsDimension x="630" y="380" />
 						</Size>
-						<FontString inherits="ChatFontNormal" />
+						<FontString inherits="ChatFontNormal">
+							<Color r="1" g="1" b="1" />
+							<Shadow>
+								<Offset>
+									<AbsDimension x="1" y="-1" />
+								</Offset>
+								<Color />
+							</Shadow>
+						</FontString>
 					</EditBox>
 				</ScrollChild>
 			</ScrollFrame>
 		</Frames>
+		<!-- <Scripts>
+			<OnLoad>
+				EquinoxFrame_OnLoad()
+			</OnLoad>
+		</Scripts> -->
 	</Frame>
 </Ui>
